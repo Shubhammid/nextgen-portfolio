@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      <h1>Shubham</h1>
+      <h1>Shubham Midgule</h1>
     </div>
   );
 }
