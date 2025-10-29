@@ -14,12 +14,12 @@ import {
   TagIcon,
   UserIcon,
 } from "@sanity/icons";
-import type {StructureResolver} from 'sanity/structure'
+import type { StructureResolver } from "sanity/structure";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Portfolio Content')
+    .title("Portfolio Content")
     .items([
       S.listItem()
         .title("Profile")
@@ -29,7 +29,6 @@ export const structure: StructureResolver = (S) =>
         ),
 
       S.divider(),
-
 
       S.listItem()
         .title("Portfolio")
@@ -171,5 +170,4 @@ export const structure: StructureResolver = (S) =>
             .schemaType("siteSettings")
             .documentId("singleton-siteSettings"),
         ),
-      
-    ])
+    ]);

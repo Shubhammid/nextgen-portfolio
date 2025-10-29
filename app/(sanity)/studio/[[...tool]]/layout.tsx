@@ -8,9 +8,7 @@ export const metadata: Metadata = {
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

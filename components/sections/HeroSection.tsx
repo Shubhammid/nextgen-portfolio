@@ -1,7 +1,10 @@
-import { sanityFetch } from "@/sanity/lib/live";
-import { defineQuery } from "next-sanity";
-import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
 import Link from "next/link";
+import { defineQuery } from "next-sanity";
+import { sanityFetch } from "@/sanity/lib/live";
+import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
+import { LayoutTextFlip } from "../ui/layout-text-flip";
+import { urlFor } from "@/sanity/lib/image";
+import { ProfileImage } from "./ProfileImage";
 
 const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
     firstName,
@@ -28,13 +31,15 @@ async function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden"
+    >
       <BackgroundRippleEffect rows={8} cols={27} cellSize={56} />
-      
+
       <div className="relative z-10 container mx-auto max-w-6xl">
         <div className="@container">
           <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-8 @lg:gap-12 items-center">
-
             <div className="@container/hero space-y-4 @md/hero:space-y-6">
               <h1 className="text-4xl @md/hero:text-5xl @lg/hero:text-7xl font-bold tracking-tight">
                 {profile.firstName}{" "}
@@ -43,13 +48,12 @@ async function HeroSection() {
               {profile.headlineStaticText &&
               profile.headlineAnimatedWords &&
               profile.headlineAnimatedWords.length > 0 ? (
-                <p>Hello</p>
-                // <LayoutTextFlip
-                //   text={profile.headlineStaticText}
-                //   words={profile.headlineAnimatedWords}
-                //   duration={profile.headlineAnimationDuration || 3000}
-                //   className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium"
-                // />
+                <LayoutTextFlip
+                  text={profile.headlineStaticText}
+                  words={profile.headlineAnimatedWords}
+                  duration={profile.headlineAnimationDuration || 3000}
+                  className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium"
+                />
               ) : (
                 <p className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium">
                   {profile.headline}
@@ -126,7 +130,7 @@ async function HeroSection() {
               </div>
             </div>
 
-            {/* {profile.profileImage && (
+            {profile.profileImage && (
               <ProfileImage
                 imageUrl={urlFor(profile.profileImage)
                   .width(600)
@@ -135,7 +139,7 @@ async function HeroSection() {
                 firstName={profile.firstName || ""}
                 lastName={profile.lastName || ""}
               />
-            )} */}
+            )}
           </div>
         </div>
       </div>
